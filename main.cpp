@@ -1,4 +1,5 @@
 
+#include "markdown2html.h"
 #include <QFile>
 #include <iostream>
 
@@ -11,7 +12,14 @@ int main(int argc, char *argv[])
 		return -2;
 
 	QString str = file.readAll();
-	QString res = str;;
+	file.close();
+	QString res;
+
+	try {
+		res = markdown2html(str);
+	} catch (...) {
+		return -3;
+	}
 
 	std::cout<<res.toStdString();
 
