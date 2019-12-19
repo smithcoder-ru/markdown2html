@@ -19,6 +19,12 @@ QString markdown2html(const QString& source)
 	{
 		QChar ch = source.at(i);
 
+		if (ch == '<')
+		{
+			res.append("&lt;");
+			continue;
+		}
+
 		if (wait == Code && section == Code)
 		{
 			wait = None;
